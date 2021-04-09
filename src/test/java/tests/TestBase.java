@@ -1,6 +1,6 @@
 package tests;
 
-import Config.DriverConfig;
+import config.DriverConfig;
 import com.codeborne.selenide.Configuration;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.aeonbits.owner.ConfigFactory;
@@ -13,6 +13,7 @@ import static com.codeborne.selenide.logevents.SelenideLogger.addListener;
 import static helpers.AttachmentsHelper.*;
 
 public class TestBase {
+
     static DriverConfig driverConfig = ConfigFactory.create(DriverConfig.class);
 
     @BeforeAll
@@ -31,6 +32,9 @@ public class TestBase {
             String user = driverConfig.remoteWebUser();
             String password = driverConfig.remoteWebPassword();
             Configuration.remote = String.format(remoteWebDriver, user, password);
+            System.out.println(user);
+            System.out.println(password);
+            System.out.printf(remoteWebDriver, user, password);
         }
     }
 
